@@ -1,0 +1,15 @@
+F:\Practice Repos\PlayersGuide\PlayersGuide\bin\Release\net7.0\PlayersGuide.exe
+F:\Practice Repos\PlayersGuide\PlayersGuide\bin\Release\net7.0\PlayersGuide.deps.json
+F:\Practice Repos\PlayersGuide\PlayersGuide\bin\Release\net7.0\PlayersGuide.runtimeconfig.json
+F:\Practice Repos\PlayersGuide\PlayersGuide\bin\Release\net7.0\PlayersGuide.dll
+F:\Practice Repos\PlayersGuide\PlayersGuide\bin\Release\net7.0\PlayersGuide.pdb
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\PlayersGuide.csproj.AssemblyReference.cache
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\PlayersGuide.GeneratedMSBuildEditorConfig.editorconfig
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\PlayersGuide.AssemblyInfoInputs.cache
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\PlayersGuide.AssemblyInfo.cs
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\PlayersGuide.csproj.CoreCompileInputs.cache
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\PlayersGuide.dll
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\refint\PlayersGuide.dll
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\PlayersGuide.pdb
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\PlayersGuide.genruntimeconfig.cache
+F:\Practice Repos\PlayersGuide\PlayersGuide\obj\Release\net7.0\ref\PlayersGuide.dll
