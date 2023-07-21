@@ -17,10 +17,9 @@ namespace PlayersGuide
         Console.WriteLine($"{i + 1}. {ChallengeMenuItems[i]}");
       }
     }
-
     public static void ShowInventory(Dictionary<string, int> inventory)
     {
-      Console.WriteLine("The followingitems are available:");
+      Console.WriteLine("The following items are available:");
       for (int i = 0; i < inventory.Count; i++)
       {
         Console.WriteLine($"{i + 1} - {inventory.ElementAt(i).Key}");

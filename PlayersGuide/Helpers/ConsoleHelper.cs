@@ -16,7 +16,7 @@ GetInput:
       }
       if (typeof(T) == typeof(string))
       {
-        return (T)(object)input.ToLower();
+        return (T)(object)input;
       }
       if (!TryParseInput(input, out T value))
       {
