@@ -16,6 +16,16 @@ GetInput:
       }
       if (typeof(T) == typeof(string))
       {
+        if (string.Equals(input, "nigger", StringComparison.InvariantCultureIgnoreCase))
+        {
+          WriteWithColor(invalidMessage ?? "Stop abusing my app, Nick... ", ConsoleColors.Warning);
+          goto GetInput;
+        }
+        if (int.TryParse(input, out _))
+        {
+          WriteWithColor(invalidMessage ?? "That seems more like a number, try again... ", ConsoleColors.Warning);
+          goto GetInput;
+        }
         return (T)(object)input;
       }
       if (!TryParseInput(input, out T value))
