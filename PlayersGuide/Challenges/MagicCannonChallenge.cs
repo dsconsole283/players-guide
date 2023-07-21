@@ -48,7 +48,7 @@ namespace PlayersGuide.Challenges
           Console.WriteLine($"{i}: {result}");
         }
         Console.WriteLine();
-        ShouldContinue = ConsoleHelper.GetContinuationDecision();
+        ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();
       }

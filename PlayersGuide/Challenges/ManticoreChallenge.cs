@@ -27,7 +27,7 @@ namespace PlayersGuide.Challenges
         Console.WriteLine();
 
 GetManticorePosition:
-        ManticorePosition = ConsoleHelper.GetInput<int>($"Player 1, how far away from the city do you want to station the Manticore? (between {PositionMin} and {PositionMax}): ");
+        ManticorePosition = ChallengeHelper.GetInput<int>($"Player 1, how far away from the city do you want to station the Manticore? (between {PositionMin} and {PositionMax}): ");
         if (ManticorePosition < PositionMin || ManticorePosition > PositionMax)
         {
           ConsoleHelper.WriteWithColor("Please stay within the allowed range. Try again.. ", ConsoleColors.Warning);
@@ -51,7 +51,7 @@ GetManticorePosition:
           ConsoleHelper.WriteWithColor($"STATUS: Round: {round}  City: {cityHealth}/{CityHealthMax}  Manticore: {manticoreHealth}/{ManticoreHealthMax}", ConsoleColors.Favorable);
           ConsoleHelper.WriteWithColor($"The cannon is expected to deal {strength} damage this round.", ConsoleColor.Red);
 
-          var shot = ConsoleHelper.GetInput<int>("Enter desired cannon range: ");
+          var shot = ChallengeHelper.GetInput<int>("Enter desired cannon range: ");
           var shotResult = GetShotResult(shot);
 
           Console.Write("That round ");
@@ -69,7 +69,7 @@ GetManticorePosition:
           ConsoleHelper.WriteWithColor("The city has been destroyed, you suck.", ConsoleColors.Warning);
 
         Console.WriteLine();
-        ShouldContinue = ConsoleHelper.GetContinuationDecision();
+        ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();
       }

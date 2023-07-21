@@ -34,13 +34,13 @@ namespace PlayersGuide.Challenges
 
         Menu.ShowInventory(_inventory);
 Selection:
-        int selection = ConsoleHelper.GetInput<int>("Which number do you want to see the price of? ");
+        int selection = ChallengeHelper.GetInput<int>("Which number do you want to see the price of? ");
         if (selection > _inventory.Count || selection < 1)
         {
           ConsoleHelper.WriteWithColor("Not a valid selection", ConsoleColors.Warning);
           goto Selection;
         }
-        var name = ConsoleHelper.GetInput<string>("Enter your name: ");
+        var name = ChallengeHelper.GetInput<string>("Enter your name: ");
         Console.WriteLine();
         var cost = _inventory.ElementAt(selection - 1).Value;
         if (string.Equals(name, "Beavis", StringComparison.InvariantCultureIgnoreCase))
@@ -50,7 +50,7 @@ Selection:
         string output = $"{_inventory.ElementAt(selection - 1).Key} cost: {cost} gold";
         ConsoleHelper.WriteWithColor(output, ConsoleColors.Favorable);
         Console.WriteLine();
-        ShouldContinue = ConsoleHelper.GetContinuationDecision();
+        ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();
       }

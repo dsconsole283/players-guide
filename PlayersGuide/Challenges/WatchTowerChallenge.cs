@@ -25,7 +25,7 @@ namespace PlayersGuide.Challenges
 X:
         try
         {
-          XCord = ConsoleHelper.GetInput<int>(prompt: "Enter a value for x: ");
+          XCord = ChallengeHelper.GetInput<int>(prompt: "Enter a value for x: ");
           if (XCord > 0)
           {
             secondCardinal = "East";
@@ -44,7 +44,7 @@ X:
 Y:
         try
         {
-          YCord = ConsoleHelper.GetInput<int>(prompt: "Enter a value for y: ");
+          YCord = ChallengeHelper.GetInput<int>(prompt: "Enter a value for y: ");
           if (YCord > 0)
           {
             firstCardinal = "North";
@@ -62,7 +62,7 @@ Y:
         Console.WriteLine();
         ConsoleHelper.WriteWithColor(XCord == 0 && YCord == 0 ? $"{text} here!" : $"{text} is to the {firstCardinal}{secondCardinal}!", ConsoleColors.Favorable);
         Console.WriteLine();
-        ShouldContinue = ConsoleHelper.GetContinuationDecision();
+        ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();
       }

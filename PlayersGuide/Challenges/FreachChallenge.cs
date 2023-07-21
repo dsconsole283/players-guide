@@ -19,7 +19,7 @@ namespace PlayersGuide.Challenges
         Titles.Freach(TitleColor);
         Console.WriteLine();
 AskForArraySize:
-        var arrayLength = ConsoleHelper.GetInput<uint>($"Enter a positive integer to set the size of an array (limit is {MaxArraySize}): ");
+        var arrayLength = ChallengeHelper.GetInput<uint>($"Enter a positive integer to set the size of an array (limit is {MaxArraySize}): ");
         if (arrayLength > MaxArraySize)
         {
           ConsoleHelper.WriteWithColor("Maximum exceeded, try again..", ConsoleColors.Warning);
@@ -62,7 +62,7 @@ AskForArraySize:
         ConsoleHelper.WriteWithColor($"Average = {average}", ConsoleColors.Favorable);
 
         Console.WriteLine();
-        ShouldContinue = ConsoleHelper.GetContinuationDecision();
+        ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();
       }

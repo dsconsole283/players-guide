@@ -22,7 +22,7 @@ namespace PlayersGuide.Challenges
         int[] copy = new int[5];
         for (int i = 0; i < initial.Length; i++)
         {
-          initial[i] = ConsoleHelper.GetInput<int>($"Enter the integer you want to occupy position {i + 1} of the array: ");
+          initial[i] = ChallengeHelper.GetInput<int>($"Enter the integer you want to occupy position {i + 1} of the array: ");
           copy[i] = initial[i];
         }
 
@@ -35,7 +35,7 @@ namespace PlayersGuide.Challenges
         ConsoleHelper.WriteWithColor($"Replicated array: [{copy[0],2}, {copy[1],2}, {copy[2],2}, {copy[3],2}, {copy[4],2}]", ConsoleColors.Favorable);
 
         Console.WriteLine();
-        ShouldContinue = ConsoleHelper.GetContinuationDecision();
+        ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();
       }

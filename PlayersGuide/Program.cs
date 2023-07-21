@@ -16,7 +16,7 @@ class Program
       ConsoleHelper.Clear();
       Menu.Display();
       Console.WriteLine();
-      selection = ConsoleHelper.GetInput<int>("Choice: ");
+      selection = ChallengeHelper.GetInput<int>("Choice: ");
 
       try
       {
