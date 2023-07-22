@@ -4,20 +4,20 @@ namespace PlayersGuide.Models
 {
   public class Arrow
   {
-    private ArrowHead _arrowHead;
-    private int _length;
-    private Fletching _fletching;
+    public ArrowHead ArrowHead { get; init; }
+    public Fletching Fletching { get; init; }
+    public int Length { get; private set; }
 
     public Arrow() { }
-    public Arrow(ArrowHead arrowHead, int length, Fletching fletching)
+    public Arrow(ArrowHead arrowHead, Fletching fletching, int length)
     {
       if (length < 60) throw new ArgumentOutOfRangeException("length");
       if (length > 100) throw new ArgumentOutOfRangeException("length");
-      _arrowHead = arrowHead;
-      _fletching = fletching;
-      _length = length;
+      ArrowHead = arrowHead;
+      Fletching = fletching;
+      Length = length;
     }
 
-    public float GetCost() => (int)_arrowHead + (int)_fletching + _length * .05F;
+    public float GetCost() => (int)ArrowHead + (int)Fletching + Length * .05F;
   }
 }

@@ -31,16 +31,16 @@ GetLength:
         var arrowLength = ChallengeHelper.GetInput<int>("How long would you like your arrow to be? ");
         if (arrowLength < _minArrowLength)
         {
-          ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"Arrow length is too short, must be at least {_minArrowLength}.", ConsoleColors.Warning), spacesAfter: 1);
+          ConsoleHelper.WriteWithColor($"Arrow length is too short, must be at least {_minArrowLength}.", ConsoleColors.Warning);
           goto GetLength;
         }
         if (arrowLength > _maxArrowLength)
         {
-          ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"Arrow length is too long, must be less than {_maxArrowLength}.", ConsoleColors.Warning), spacesAfter: 1);
+          ConsoleHelper.WriteWithColor($"Arrow length is too long, must be less than {_maxArrowLength}.", ConsoleColors.Warning);
           goto GetLength;
         }
 
-        Arrow = new Arrow(selectedArrowHead, arrowLength, selectedFletching);
+        Arrow = new Arrow(selectedArrowHead, selectedFletching, arrowLength);
 
         ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"The arrow you requested costs {Arrow.GetCost()} gold.", ConsoleColors.Favorable), spacesBefore: 1);
 
