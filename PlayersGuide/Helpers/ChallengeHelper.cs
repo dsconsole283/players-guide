@@ -148,6 +148,22 @@ GetInput:
             return true;
           }
         }
+        if (typeof(T) == typeof(ArrowHead))
+        {
+          if (Enum.TryParse<ArrowHead>(input, true, out var value))
+          {
+            parsedValue = (T)(object)value;
+            return true;
+          }
+        }
+        if (typeof(T) == typeof(Fletching))
+        {
+          if (Enum.TryParse<Fletching>(input, true, out var value))
+          {
+            parsedValue = (T)(object)value;
+            return true;
+          }
+        }
       }
       parsedValue = default;
       return false;

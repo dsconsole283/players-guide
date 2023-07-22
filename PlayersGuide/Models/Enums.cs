@@ -30,5 +30,19 @@
       Salty,
       Sweet
     }
+
+    public enum ArrowHead
+    {
+      Steel = 10,
+      Wood = 3,
+      Obsidian = 5
+    }
+
+    public enum Fletching
+    {
+      Plastic = 10,
+      TurkeyFeathers = 5,
+      GooseFeathers = 3
+    }
   }
 }
