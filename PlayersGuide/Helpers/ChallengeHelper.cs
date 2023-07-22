@@ -1,4 +1,5 @@
 ﻿using PlayersGuide.Models;
+using System.Text;
 using static PlayersGuide.Models.Enums;
 
 namespace PlayersGuide.Helpers
@@ -106,7 +107,7 @@ GetInput:
       Console.WriteLine($"Available {name}s");
       foreach (var item in source)
       {
-        ConsoleHelper.WriteWithColor($"{item}", ConsoleColors.Informative);
+        ConsoleHelper.WriteWithColor($"{item.ToString().AddSpacing()}", ConsoleColors.Informative);
       }
 GetInput:
       Console.WriteLine();
@@ -124,9 +125,10 @@ GetInput:
     {
       if (input is not null)
       {
+        var formattedInput = input.Replace(" ", "");
         if (typeof(T) == typeof(Seasoning))
         {
-          if (Enum.TryParse<Seasoning>(input, true, out var value))
+          if (Enum.TryParse<Seasoning>(formattedInput, true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -134,7 +136,7 @@ GetInput:
         }
         if (typeof(T) == typeof(Ingredient))
         {
-          if (Enum.TryParse<Ingredient>(input, true, out var value))
+          if (Enum.TryParse<Ingredient>(formattedInput, true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -142,7 +144,7 @@ GetInput:
         }
         if (typeof(T) == typeof(FoodType))
         {
-          if (Enum.TryParse<FoodType>(input, true, out var value))
+          if (Enum.TryParse<FoodType>(formattedInput, true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -150,7 +152,7 @@ GetInput:
         }
         if (typeof(T) == typeof(ArrowHead))
         {
-          if (Enum.TryParse<ArrowHead>(input, true, out var value))
+          if (Enum.TryParse<ArrowHead>(formattedInput, true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -158,7 +160,7 @@ GetInput:
         }
         if (typeof(T) == typeof(Fletching))
         {
-          if (Enum.TryParse<Fletching>(input, true, out var value))
+          if (Enum.TryParse<Fletching>(formattedInput, true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -167,6 +169,25 @@ GetInput:
       }
       parsedValue = default;
       return false;
+    }
+
+    public static string AddSpacing(this string input)
+    {
+      var outputBuilder = new StringBuilder();
+      for (int i = 0; i < input.Length; i++)
+      {
+        char currentChar = input[i];
+        char nextChar = (i + 1 < input.Length) ? input[i + 1] : '\0';
+        char prevChar = (i - 1 >= 0) ? input[i - 1] : '\0';
+
+        if (i > 0 && char.IsUpper(currentChar) && char.IsLower(nextChar))
+        {
+          outputBuilder.Append(" ");
+        }
+
+        outputBuilder.Append(currentChar);
+      }
+      return outputBuilder.ToString();
     }
   }
 }
