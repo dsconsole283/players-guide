@@ -43,12 +43,7 @@ GetLength:
           goto GetLength;
         }
 
-        Arrow = new Arrow
-        {
-          _arrowHead = selectedArrowHead,
-          _fletching = selectedFletching,
-          _length = arrowLength
-        };
+        Arrow = new Arrow(selectedArrowHead, arrowLength, selectedFletching);
 
         Console.WriteLine();
         ConsoleHelper.WriteWithColor($"The arrow you requested costs {Arrow.GetCost()} gold.", ConsoleColors.Favorable);
