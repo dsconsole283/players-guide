@@ -9,13 +9,18 @@ class Program
   static void Main()
   {
     Console.Title = @"C Sharp Player's Guide Challenges";
+
     GetChallenges();
+
     int selection = 0;
     do
     {
       ConsoleHelper.Clear();
+
       Menu.Display();
-      Console.WriteLine();
+
+      ConsoleHelper.AddSpace(1);
+
       selection = ChallengeHelper.GetInput<int>("Choice: ");
 
       try

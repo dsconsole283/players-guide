@@ -15,9 +15,7 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.MagicCannon(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.MagicCannon(TitleColor), spacesBefore: 1, spacesAfter: 1);
 
         ConsoleHelper.WriteWithColor("Press any key to fire the cannon!", ConsoleColors.Inquisitive);
         Console.ReadKey();
@@ -45,9 +43,9 @@ namespace PlayersGuide.Challenges
           }
           else
             Console.ForegroundColor = ConsoleColor.White;
-          Console.WriteLine($"{i}: {result}");
+          ConsoleHelper.FormatSpacing(() => Console.WriteLine($"{i}: {result}"), spacesAfter: 1);
         }
-        Console.WriteLine();
+
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();

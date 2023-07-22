@@ -19,9 +19,7 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.SimulaSoup(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.SimulaSoup(TitleColor), spacesBefore: 1, spacesAfter: 1);
 
         ChallengeHelper.GetInputFromEnum(Seasonings, out var selectedSeasoning);
         ChallengeHelper.GetInputFromEnum(Ingredients, out var selectedIngredient);
@@ -29,10 +27,8 @@ namespace PlayersGuide.Challenges
 
         Recipe = (selectedSeasoning, selectedIngredient, selectedFoodType);
 
-        Console.WriteLine();
-        ConsoleHelper.WriteWithColor($"You made {Recipe.seasoning} {Recipe.ingredient} {Recipe.foodType}", ConsoleColors.Favorable);
+        ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"You made {Recipe.seasoning} {Recipe.ingredient} {Recipe.foodType}", ConsoleColors.Favorable), spacesBefore: 1, spacesAfter: 1);
 
-        Console.WriteLine();
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();

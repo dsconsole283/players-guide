@@ -20,35 +20,31 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.VinFletchersArrows(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.VinFletchersArrows(TitleColor), spacesBefore: 1, spacesAfter: 1);
 
         ChallengeHelper.GetInputFromEnum(ArrowHead, out var selectedArrowHead);
         ChallengeHelper.GetInputFromEnum(Fletching, out var selectedFletching);
 
 GetLength:
-        Console.WriteLine();
+        ConsoleHelper.AddSpace(1);
+
         var arrowLength = ChallengeHelper.GetInput<int>("How long would you like your arrow to be? ");
         if (arrowLength < _minArrowLength)
         {
-          ConsoleHelper.WriteWithColor($"Arrow length is too short, must be at least {_minArrowLength}.", ConsoleColors.Warning);
-          Console.WriteLine();
+          ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"Arrow length is too short, must be at least {_minArrowLength}.", ConsoleColors.Warning), spacesAfter: 1);
           goto GetLength;
         }
         if (arrowLength > _maxArrowLength)
         {
-          ConsoleHelper.WriteWithColor($"Arrow length is too long, must be less than {_maxArrowLength}.", ConsoleColors.Warning);
-          Console.WriteLine();
+          ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"Arrow length is too long, must be less than {_maxArrowLength}.", ConsoleColors.Warning), spacesAfter: 1);
           goto GetLength;
         }
 
         Arrow = new Arrow(selectedArrowHead, arrowLength, selectedFletching);
 
-        Console.WriteLine();
-        ConsoleHelper.WriteWithColor($"The arrow you requested costs {Arrow.GetCost()} gold.", ConsoleColors.Favorable);
+        ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"The arrow you requested costs {Arrow.GetCost()} gold.", ConsoleColors.Favorable), spacesBefore: 1);
 
-        Console.WriteLine();
+        ConsoleHelper.AddSpace(1);
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();

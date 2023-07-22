@@ -1,4 +1,5 @@
-﻿using PlayersGuide.Models;
+﻿using PlayersGuide.Helpers;
+using PlayersGuide.Models;
 
 namespace PlayersGuide
 {
@@ -9,9 +10,8 @@ namespace PlayersGuide
 
     public static void Display()
     {
-      Console.WriteLine();
-      Titles.MainMenu(ConsoleColor.Red);
-      Console.WriteLine();
+      ConsoleHelper.FormatSpacing(() => Titles.MainMenu(ConsoleColor.Red), 1, 1);
+
       for (int i = 0; i < ChallengeMenuItems.Count; i++)
       {
         Console.WriteLine($"{i + 1}. {ChallengeMenuItems[i]}");
@@ -19,7 +19,7 @@ namespace PlayersGuide
     }
     public static void ShowInventory(Dictionary<string, int> inventory)
     {
-      Console.WriteLine("The following items are available:");
+      ConsoleHelper.FormatSpacing(() => Console.WriteLine("The following items are available:"), spacesBefore: 1, spacesAfter: 1);
       for (int i = 0; i < inventory.Count; i++)
       {
         Console.WriteLine($"{i + 1} - {inventory.ElementAt(i).Key}");

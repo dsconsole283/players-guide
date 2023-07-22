@@ -28,12 +28,11 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.ShopChallenge(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.ShopChallenge(TitleColor), spacesBefore: 1, spacesAfter: 1);
 
         Menu.ShowInventory(_inventory);
 Selection:
+        ConsoleHelper.AddSpace(1);
         int selection = ChallengeHelper.GetInput<int>("Which number do you want to see the price of? ");
         if (selection > _inventory.Count || selection < 1)
         {
@@ -41,15 +40,18 @@ Selection:
           goto Selection;
         }
         var name = ChallengeHelper.GetInput<string>("Enter your name: ");
-        Console.WriteLine();
+
+        ConsoleHelper.AddSpace(1);
+
         var cost = _inventory.ElementAt(selection - 1).Value;
         if (string.Equals(name, "Beavis", StringComparison.InvariantCultureIgnoreCase))
         {
           cost /= 2;
         }
         string output = $"{_inventory.ElementAt(selection - 1).Key} cost: {cost} gold";
-        ConsoleHelper.WriteWithColor(output, ConsoleColors.Favorable);
-        Console.WriteLine();
+
+        ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor(output, ConsoleColors.Favorable), spacesAfter: 1);
+
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();

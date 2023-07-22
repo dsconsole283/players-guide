@@ -15,9 +15,8 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.Freach(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.Freach(TitleColor), spacesBefore: 1, spacesAfter: 1);
+
 AskForArraySize:
         var arrayLength = ChallengeHelper.GetInput<uint>($"Enter a positive integer to set the size of an array (limit is {MaxArraySize}): ");
         if (arrayLength > MaxArraySize)
@@ -28,9 +27,7 @@ AskForArraySize:
         Console.WriteLine("Now press any key to fill your array with random numbers..");
         Console.ReadKey();
 
-        Console.WriteLine();
-        Console.WriteLine("Random numbers in array:");
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Console.WriteLine("Random numbers in array:"), spacesBefore: 1, spacesAfter: 1);
 
         int[] array = new int[arrayLength];
         for (int i = 0; i < array.Length; i++)
@@ -52,16 +49,16 @@ AskForArraySize:
           if (index < currentSmallest)
             currentSmallest = index;
         }
-        Console.WriteLine();
-        ConsoleHelper.WriteWithColor($"Smallest value = {currentSmallest}", ConsoleColors.Favorable);
+
+        ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"Smallest value = {currentSmallest}", ConsoleColors.Favorable), spacesBefore: 1);
 
         int total = 0;
         foreach (int index in array)
           total += index;
         decimal average = (decimal)total / array.Length;
-        ConsoleHelper.WriteWithColor($"Average = {average}", ConsoleColors.Favorable);
 
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor($"Average = {average}", ConsoleColors.Favorable), spacesAfter: 1);
+
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();

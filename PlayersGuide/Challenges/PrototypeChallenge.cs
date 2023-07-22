@@ -16,9 +16,7 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.PrototypeChallenge(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.PrototypeChallenge(TitleColor), spacesBefore: 1, spacesAfter: 1);
 
         var isValidNumber = false;
         while (!isValidNumber)
@@ -36,9 +34,9 @@ namespace PlayersGuide.Challenges
 
           numberGuess = ChallengeHelper.GetInput<int>("What is your next guess? : ");
         }
-        Console.WriteLine();
-        ConsoleHelper.WriteWithColor("You guessed the number!", ConsoleColors.Favorable);
-        Console.WriteLine();
+
+        ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor("You guessed the number!", ConsoleColors.Favorable), 1, 1);
+
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();

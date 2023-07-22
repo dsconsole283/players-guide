@@ -89,8 +89,9 @@ GetInput:
         "Are you interested in having another crack at it, mate?"
       };
       var random = new Random().Next(messages.Count());
-      Console.WriteLine(messages[random]);
-      Console.WriteLine();
+
+      ConsoleHelper.FormatSpacing(() => Console.WriteLine(messages[random]), spacesAfter: 1);
+
       var input = GetInput<string>(prompt: "\"y\" to continue, anything else to quit.. : ");
       return input switch
       {
@@ -103,18 +104,19 @@ GetInput:
     {
       var arrayType = source.GetType();
       var name = arrayType.GetElementType().Name;
-      Console.WriteLine();
-      Console.WriteLine($"Available {name}s");
+
+      ConsoleHelper.FormatSpacing(() => Console.WriteLine($"Available {name}s"), spacesBefore: 1);
+
       foreach (var item in source)
       {
         ConsoleHelper.WriteWithColor($"{item.ToString().AddSpacing()}", ConsoleColors.Informative);
       }
 GetInput:
-      Console.WriteLine();
+      ConsoleHelper.AddSpace(1);
       var input = GetInput<string>($"Which {name?.ToLower()} do you choose?: ");
       if (!TryParseEnumInput(input, out T? value))
       {
-        ConsoleHelper.WriteWithColor($"'{input}'", ConsoleColors.Informative, true);
+        ConsoleHelper.WriteWithColor($"'{input}'", ConsoleColors.Informative, useSameLine: true);
         ConsoleHelper.WriteWithColor(" doesn't seem to be available, please choose again..", ConsoleColors.Warning);
         goto GetInput;
       }
@@ -125,10 +127,10 @@ GetInput:
     {
       if (input is not null)
       {
-        var formattedInput = input.Replace(" ", "");
+        var formattedInput = input.Replace(oldValue: " ", newValue: "");
         if (typeof(T) == typeof(Seasoning))
         {
-          if (Enum.TryParse<Seasoning>(formattedInput, true, out var value))
+          if (Enum.TryParse<Seasoning>(formattedInput, ignoreCase: true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -136,7 +138,7 @@ GetInput:
         }
         if (typeof(T) == typeof(Ingredient))
         {
-          if (Enum.TryParse<Ingredient>(formattedInput, true, out var value))
+          if (Enum.TryParse<Ingredient>(formattedInput, ignoreCase: true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -144,7 +146,7 @@ GetInput:
         }
         if (typeof(T) == typeof(FoodType))
         {
-          if (Enum.TryParse<FoodType>(formattedInput, true, out var value))
+          if (Enum.TryParse<FoodType>(formattedInput, ignoreCase: true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -152,7 +154,7 @@ GetInput:
         }
         if (typeof(T) == typeof(ArrowHead))
         {
-          if (Enum.TryParse<ArrowHead>(formattedInput, true, out var value))
+          if (Enum.TryParse<ArrowHead>(formattedInput, ignoreCase: true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
@@ -160,7 +162,7 @@ GetInput:
         }
         if (typeof(T) == typeof(Fletching))
         {
-          if (Enum.TryParse<Fletching>(formattedInput, true, out var value))
+          if (Enum.TryParse<Fletching>(formattedInput, ignoreCase: true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;

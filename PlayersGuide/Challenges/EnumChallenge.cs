@@ -16,9 +16,7 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.Simula(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.Simula(TitleColor), spacesBefore: 1, spacesAfter: 1);
 
         var keepRunning = true;
 
@@ -38,7 +36,7 @@ namespace PlayersGuide.Challenges
           };
         }
 
-        Console.WriteLine();
+        ConsoleHelper.AddSpace(1);
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();

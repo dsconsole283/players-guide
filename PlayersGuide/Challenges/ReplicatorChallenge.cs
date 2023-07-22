@@ -14,9 +14,7 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.Replicator(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.Replicator(TitleColor), spacesBefore: 1, spacesAfter: 1);
 
         int[] initial = new int[5];
         int[] copy = new int[5];
@@ -26,19 +24,26 @@ namespace PlayersGuide.Challenges
           copy[i] = initial[i];
         }
 
-        Console.WriteLine();
-        ConsoleHelper.WriteWithColor("Replicating...", ConsoleColors.Warning);
-        Task.Delay(300);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => ConsoleHelper.WriteWithColor("Replicating...", ConsoleColors.Warning), spacesBefore: 1);
 
-        ConsoleHelper.WriteWithColor($"Original array:   [{initial[0],2}, {initial[1],2}, {initial[2],2}, {initial[3],2}, {initial[4],2}]", ConsoleColors.Favorable);
-        ConsoleHelper.WriteWithColor($"Replicated array: [{copy[0],2}, {copy[1],2}, {copy[2],2}, {copy[3],2}, {copy[4],2}]", ConsoleColors.Favorable);
+        //Simulate important calculations being made...
+        AwaitDelay().GetAwaiter().GetResult();
 
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() =>
+        {
+          ConsoleHelper.WriteWithColor($"Original array:   [{initial[0],2}, {initial[1],2}, {initial[2],2}, {initial[3],2}, {initial[4],2}]", ConsoleColors.Favorable);
+          ConsoleHelper.WriteWithColor($"Replicated array: [{copy[0],2}, {copy[1],2}, {copy[2],2}, {copy[3],2}, {copy[4],2}]", ConsoleColors.Favorable);
+        }, spacesBefore: 1, spacesAfter: 1);
+
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();
       }
+    }
+
+    private async Task AwaitDelay()
+    {
+      await Task.Delay(3000);
     }
   }
 }

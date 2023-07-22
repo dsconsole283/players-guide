@@ -21,10 +21,7 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.ManticoreHunt(TitleColor);
-        Console.WriteLine();
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.ManticoreHunt(TitleColor), spacesBefore: 1, spacesAfter: 2);
 
 GetManticorePosition:
         ManticorePosition = ChallengeHelper.GetInput<int>($"Player 1, how far away from the city do you want to station the Manticore? (between {PositionMin} and {PositionMax}): ");
@@ -39,15 +36,15 @@ GetManticorePosition:
         var cityHealth = CityHealthMax;
         var manticoreHealth = ManticoreHealthMax;
 
-        Console.WriteLine();
-        Console.WriteLine("Player 2, it is your turn.");
+        ConsoleHelper.FormatSpacing(() => Console.WriteLine("Player 2, it is your turn."), spacesBefore: 1);
+
         int round = 1;
 
         while (manticoreHealth > 0 && cityHealth > 0)
         {
           var strength = DetermineShotStrength(round);
-          Console.WriteLine();
-          Console.WriteLine(@"-------------------------------------------------------------");
+
+          ConsoleHelper.FormatSpacing(() => Console.WriteLine(@"-------------------------------------------------------------"), spacesBefore: 1);
           ConsoleHelper.WriteWithColor($"STATUS: Round: {round}  City: {cityHealth}/{CityHealthMax}  Manticore: {manticoreHealth}/{ManticoreHealthMax}", ConsoleColors.Favorable);
           ConsoleHelper.WriteWithColor($"The cannon is expected to deal {strength} damage this round.", ConsoleColor.Red);
 
@@ -62,13 +59,14 @@ GetManticorePosition:
           round = round + 1;
         }
 
-        Console.WriteLine();
-        if (manticoreHealth <= 0)
-          ConsoleHelper.WriteWithColor("The Manticore has been destroyed! The city of Consolas has been saved!", ConsoleColors.Favorable);
-        else
-          ConsoleHelper.WriteWithColor("The city has been destroyed, you suck.", ConsoleColors.Warning);
+        ConsoleHelper.FormatSpacing(() =>
+        {
+          if (manticoreHealth <= 0)
+            ConsoleHelper.WriteWithColor("The Manticore has been destroyed! The city of Consolas has been saved!", ConsoleColors.Favorable);
+          else
+            ConsoleHelper.WriteWithColor("The city has been destroyed, you suck.", ConsoleColors.Warning);
+        }, spacesBefore: 1, spacesAfter: 1);
 
-        Console.WriteLine();
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();

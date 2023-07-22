@@ -16,9 +16,8 @@ namespace PlayersGuide.Challenges
       {
         ConsoleHelper.Clear();
 
-        Console.WriteLine();
-        Titles.Countdown(TitleColor);
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Titles.Countdown(TitleColor), 1, 1);
+
 AskForInput:
         var startingNumber = ChallengeHelper.GetInput<int>($"Enter a number to start the countdown (Allowed range {MinInput} - {MaxInput}): ");
         if (startingNumber > MaxInput || startingNumber < MinInput)
@@ -26,9 +25,9 @@ AskForInput:
           ConsoleHelper.WriteWithColor("Limit exceeded, try again..", ConsoleColors.Warning);
           goto AskForInput;
         }
-        Countdown(startingNumber);
 
-        Console.WriteLine();
+        ConsoleHelper.FormatSpacing(() => Countdown(startingNumber), spacesAfter: 1);
+
         ShouldContinue = ChallengeHelper.GetContinuationDecision();
 
         ConsoleHelper.Clear();
