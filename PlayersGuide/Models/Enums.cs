@@ -44,5 +44,12 @@
       TurkeyFeathers = 5,
       GooseFeathers = 3
     }
+
+    public enum GenericArrow
+    {
+      Beginner,
+      Marksman,
+      Elite
+    }
   }
 }

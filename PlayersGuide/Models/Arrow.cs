@@ -19,5 +19,11 @@ namespace PlayersGuide.Models
     }
 
     public float GetCost() => (int)ArrowHead + (int)Fletching + Length * .05F;
+
+    public static Arrow CreateEliteArow() => new Arrow(arrowHead: ArrowHead.Steel, fletching: Fletching.Plastic, length: 95);
+
+    public static Arrow CreateBeginnerArrow() => new Arrow(arrowHead: ArrowHead.Wood, fletching: Fletching.GooseFeathers, length: 75);
+
+    public static Arrow CreateMarksmanArrow() => new Arrow(arrowHead: ArrowHead.Steel, fletching: Fletching.GooseFeathers, length: 65);
   }
 }

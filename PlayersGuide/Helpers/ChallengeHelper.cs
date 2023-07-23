@@ -91,9 +91,13 @@ GetInput:
       var random = new Random().Next(messages.Count());
 
       ConsoleHelper.FormatSpacing(() => Console.WriteLine(messages[random]), spacesAfter: 1);
+      return GetBoolInput();
+    }
 
-      var input = GetInput<string>(prompt: "\"y\" to continue, anything else to quit.. : ");
-      return input switch
+    public static bool GetBoolInput(string? message = null)
+    {
+      var input = GetInput<string>(message ?? "'y' to continue, anything else to quit..: ");
+      return input.ToLower() switch
       {
         "y" => true,
         _ => false
@@ -103,7 +107,7 @@ GetInput:
     public static void GetInputFromEnum<T>(T[] source, out T? selectedItem) where T : Enum
     {
       var arrayType = source.GetType();
-      var name = arrayType.GetElementType().Name;
+      var name = arrayType?.GetElementType()?.Name;
 
       ConsoleHelper.FormatSpacing(() => Console.WriteLine($"Available {name}s"), spacesBefore: 1);
 
@@ -163,6 +167,14 @@ GetInput:
         if (typeof(T) == typeof(Fletching))
         {
           if (Enum.TryParse<Fletching>(formattedInput, ignoreCase: true, out var value))
+          {
+            parsedValue = (T)(object)value;
+            return true;
+          }
+        }
+        if (typeof(T) == typeof(GenericArrow))
+        {
+          if (Enum.TryParse<GenericArrow>(formattedInput, ignoreCase: true, out var value))
           {
             parsedValue = (T)(object)value;
             return true;
