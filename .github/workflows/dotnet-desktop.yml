@@ -84,7 +84,7 @@ jobs:
     - name: Decode the pfx
       run: |
         $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
-        $certificatePath = Join-Path -Path Cert:\CurrentUser\My\generic.pfx -ChildPath GitHubActionsWorkflow.pfx
+        $certificatePath = Cert:\CurrentUser\My\generic.pfx
         [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
     # Create the app package by building and packaging the Windows Application Packaging project
@@ -98,7 +98,7 @@ jobs:
 
     # Remove the pfx
     - name: Remove the pfx
-      run: Remove-Item -path Cert:\CurrentUser\My\generic.pfx\GitHubActionsWorkflow.pfx
+      run: Remove-Item -path Cert:\CurrentUser\My\generic.pfx
 
     # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
     - name: Upload build artifacts
