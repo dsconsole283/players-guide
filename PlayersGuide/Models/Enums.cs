@@ -2,7 +2,7 @@
 {
   public static class Enums
   {
-    public enum BoxState
+    public enum BarrierState
     {
       Open,
       Closed,
@@ -50,6 +50,38 @@
       Beginner,
       Marksman,
       Elite
+    }
+
+    public enum CardColor
+    {
+      Red,
+      Green,
+      Blue,
+      Yellow
+    }
+
+    public enum CardRank
+    {
+      One = 1,
+      Two,
+      Three,
+      Four,
+      Five,
+      Six,
+      Seven,
+      Eight,
+      Nine,
+      Ten,
+      Dollar,
+      Percent,
+      Circumflex,
+      Ampersand
+    }
+
+    public enum CardType
+    {
+      Number,
+      Symbol
     }
   }
 }

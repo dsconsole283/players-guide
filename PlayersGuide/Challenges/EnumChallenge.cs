@@ -7,7 +7,7 @@ namespace PlayersGuide.Challenges
   public class EnumChallenge : ChallengeBase
   {
     public static readonly string DisplayName = "Simula's Test";
-    public BoxState BoxState { get; set; } = BoxState.Locked;
+    public BarrierState BoxState { get; set; } = BarrierState.Locked;
     public EnumChallenge() { }
 
     public override void Run()
@@ -28,10 +28,10 @@ namespace PlayersGuide.Challenges
           keepRunning = !string.Equals(boxAction, "exit", StringComparison.InvariantCultureIgnoreCase);
           BoxState = boxAction switch
           {
-            "close" => BoxState == BoxState.Open ? BoxState.Closed : BoxState,
-            "open" => BoxState == BoxState.Closed ? BoxState.Open : BoxState,
-            "lock" => BoxState == BoxState.Closed ? BoxState.Locked : BoxState,
-            "unlock" => BoxState == BoxState.Locked ? BoxState.Closed : BoxState,
+            "close" => BoxState == BarrierState.Open ? BarrierState.Closed : BoxState,
+            "open" => BoxState == BarrierState.Closed ? BarrierState.Open : BoxState,
+            "lock" => BoxState == BarrierState.Closed ? BarrierState.Locked : BoxState,
+            "unlock" => BoxState == BarrierState.Locked ? BarrierState.Closed : BoxState,
             _ => BoxState = BoxState
           };
         }
