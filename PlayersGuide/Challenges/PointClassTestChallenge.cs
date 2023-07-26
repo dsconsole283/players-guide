@@ -15,6 +15,9 @@ namespace PlayersGuide.Challenges
       while (ShouldContinue)
       {
         ConsoleHelper.Clear();
+
+        //ConsoleHelper.FormatSpacing(() => Titles.Simula(TitleColor), spacesBefore: 1, spacesAfter: 1);
+
         Door = new Door(ChallengeHelper.GetInput<int>("Enter the passcode for your brand new door: "));
         ConsoleHelper.Clear();
 

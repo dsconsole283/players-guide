@@ -25,7 +25,7 @@ GetInput:
         }
         if (int.TryParse(input, out _))
         {
-          ConsoleHelper.WriteWithColor(invalidMessage ?? "That seems more like a number, try again... ", ConsoleColors.Warning);
+          ConsoleHelper.WriteWithColor(invalidMessage ?? "That seems more like just a number, try again... ", ConsoleColors.Warning);
           goto GetInput;
         }
         return (T)(object)input;
