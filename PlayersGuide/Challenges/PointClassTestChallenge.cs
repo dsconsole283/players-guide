@@ -47,17 +47,17 @@ namespace PlayersGuide.Challenges
     {
       switch (command.ToLower())
       {
-        case "open":
+        case var openCommand when openCommand.Contains("open", StringComparison.InvariantCultureIgnoreCase):
           return Door.State == BarrierState.Closed ? BarrierState.Open : Door.State;
-        case "close":
+        case var closeCommand when closeCommand.Contains("close", StringComparison.InvariantCultureIgnoreCase):
           return Door.State == BarrierState.Open ? BarrierState.Closed : Door.State;
-        case "lock":
-          return Door.State == BarrierState.Closed ? BarrierState.Locked : Door.State;
-        case "unlock":
+        case var unlockCommand when unlockCommand.Contains("unlock", StringComparison.InvariantCultureIgnoreCase):
           var input = ChallengeHelper.GetInput<int>("Enter the passcode: ");
           ConsoleHelper.Clear();
           return CheckCodeMatch(input) ? BarrierState.Closed : Door.State;
-        case "change code":
+        case var lockCommand when lockCommand.Contains("lock", StringComparison.InvariantCultureIgnoreCase):
+          return Door.State == BarrierState.Closed ? BarrierState.Locked : Door.State;
+        case var changeCommand when changeCommand.Contains("change", StringComparison.InvariantCultureIgnoreCase):
           if (Door.State != BarrierState.Open)
           {
             ConsoleHelper.WriteWithColor("Door must be open to change the code.", ConsoleColors.Warning);
@@ -74,12 +74,14 @@ namespace PlayersGuide.Challenges
               continue;
             }
             var changeCodeResult = TryChangeCode(code);
-            if (changeCodeResult.Succeeded)
+            if (!changeCodeResult.Succeeded)
             {
-              ConsoleHelper.Clear();
-              ConsoleHelper.WriteWithColor("Passcode successfully changed.", ConsoleColors.Favorable);
-              isGood = true;
+              ConsoleHelper.WriteWithColor(changeCodeResult.FailureReason ?? "Unkown Failure", ConsoleColors.Warning);
+              continue;
             }
+            ConsoleHelper.Clear();
+            ConsoleHelper.WriteWithColor("Passcode successfully changed.", ConsoleColors.Favorable);
+            isGood = true;
           }
           while (!isGood);
           return Door.State;

@@ -18,7 +18,7 @@ GetInput:
       }
       if (typeof(T) == typeof(string))
       {
-        if (string.Equals(input, "nigger", StringComparison.InvariantCultureIgnoreCase))
+        if (input.Contains("nigger", StringComparison.InvariantCultureIgnoreCase))
         {
           ConsoleHelper.WriteWithColor(invalidMessage ?? "Stop abusing my app, Nick... ", ConsoleColors.Warning);
           goto GetInput;
