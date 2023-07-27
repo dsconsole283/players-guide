@@ -9,7 +9,7 @@ namespace PlayersGuide.Challenges
 
     private static readonly int CityHealthMax = 15;
     private static readonly int ManticoreHealthMax = 10;
-    private static readonly int PositionMax = 100;
+    private static readonly int PositionMax = 1000;
     private static readonly int PositionMin = 0;
     public int ManticorePosition { get; set; }
 

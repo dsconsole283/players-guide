@@ -47,13 +47,14 @@ GetInput:
           hasNumber = hasNumber == true ? true : char.IsNumber(c);
         }
 
-        if (hasUpper && hasLower && hasNumber)
+        var metRequirements = hasUpper && hasLower && hasNumber;
+        if (!metRequirements)
         {
           ConsoleHelper.WriteWithColor($"Your password does not meet the standards. Must contain an upper and lower-cased letter and a number.", ConsoleColors.Warning);
           goto GetInput;
         }
-
         ConsoleHelper.WriteWithColor($"Your password of {password} passes validation, congrats.", ConsoleColors.Favorable);
+
 
         ConsoleHelper.AddSpace(1);
         ShouldContinue = ChallengeHelper.GetContinuationDecision();

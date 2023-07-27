@@ -83,5 +83,13 @@
       Number,
       Symbol
     }
+
+    public enum RPS
+    {
+      Unknown,
+      Rock,
+      Paper,
+      Scissors
+    }
   }
 }

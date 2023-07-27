@@ -96,10 +96,10 @@ GetInput:
 
     public static bool GetBoolInput(string? message = null)
     {
-      var input = GetInput<string>(message ?? "'y' to continue, anything else to quit..: ");
+      var input = GetInput<string>(message ?? "Yes/No: ");
       return input.ToLower() switch
       {
-        "y" => true,
+        var isYes when isYes.Contains("y", StringComparison.OrdinalIgnoreCase) => true,
         _ => false
       };
     }
@@ -202,6 +202,32 @@ GetInput:
         outputBuilder.Append(currentChar);
       }
       return outputBuilder.ToString();
+    }
+
+    public static string GetMaskedInput(string prompt)
+    {
+      ConsoleHelper.WriteWithColor(prompt, ConsoleColors.Inquisitive);
+      string input = "";
+      ConsoleKeyInfo key;
+
+      while ((key = Console.ReadKey(true)).Key != ConsoleKey.Enter)
+      {
+        if (key.Key != ConsoleKey.Backspace)
+        {
+          input += key.KeyChar;
+        }
+        else
+        {
+          if (!string.IsNullOrEmpty(input))
+          {
+            input = input.Substring(0, input.Length - 1);
+            Console.Write("\b \b");
+          }
+        }
+      }
+
+      Console.WriteLine();
+      return input;
     }
   }
 }

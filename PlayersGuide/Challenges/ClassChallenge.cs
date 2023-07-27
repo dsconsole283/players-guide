@@ -25,7 +25,7 @@ namespace PlayersGuide.Challenges
 
         ConsoleHelper.FormatSpacing(() => Titles.VinFletchersArrows(TitleColor), spacesBefore: 1, spacesAfter: 1);
 
-        var isGenericOrder = ChallengeHelper.GetBoolInput("Would you like to buy some of our pre-made arrows? 'y' to see selection, anything else to order a custom arrow: ");
+        var isGenericOrder = ChallengeHelper.GetBoolInput("Would you like to buy some of our pre-made arrows?: ");
 
         if (isGenericOrder)
         {
